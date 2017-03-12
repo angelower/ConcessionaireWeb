@@ -40,24 +40,24 @@ public class ConcessionaireServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
          PrintWriter out = response.getWriter();
         try{
-            /* TODO output your page here. You may use following sample code. */
-            
-            String action = request.getParameter("action");
-            String url = "index.jsp";
+           String action = request.getParameter("action");
+           String url = "index.jsp";
            if("search".equals(action)){
-               String p = request.getParameter("Placa");
-               boolean checkPlaca = carsFacade.checkPlaca(p);
-                if(checkPlaca){
-                    request.getSession().setAttribute("Placa", p);
-                    url = "car.jsp";
+           String p = request.getParameter("Placa");
+           boolean checkPlaca = carsFacade.checkPlaca(p);
+           if(checkPlaca){
+           request.getSession().setAttribute("Placa", p);
+           url = "car.jsp";
                 }
             
         }
+
                     
        
         } finally {
             out.close();
-        }
+        }         /* TODO output your page here. You may use following sample code. */
+  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
