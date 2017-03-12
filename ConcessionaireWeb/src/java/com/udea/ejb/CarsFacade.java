@@ -1,4 +1,4 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -35,7 +35,7 @@ public class CarsFacade extends AbstractFacade<Cars> implements CarsFacadeLocal 
     @Override
     public boolean checkPlaca(String p) {
         
-        Query q = em.createQuery("select a from Cars a" + "where a.placa=:p");
+        Query q = em.createQuery("select a from Cars a " + "where a.placa=:p");
         q.setParameter("p", p);
         
         return q.getResultList().size()>0;

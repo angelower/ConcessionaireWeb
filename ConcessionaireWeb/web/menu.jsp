@@ -5,6 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-|<a href="listcar.jsp">Busqueda por placa</a>|
+|<a href="listcars.jsp">Busqueda por placa</a>|
 |<a href="car.jsp">Registro de venta</a>|
 <hr/>

@@ -20,7 +20,7 @@
         <jsp:include page="menu.jsp"></jsp:include>
         <h1>Hello World!</h1>
         <div class="container well">
-            <form action="AccountServlet?action=insert" method="post">
+            <form action="ConcessionaireServlet?action=insert" method="post">
 
                 <table>
                     <tr>
@@ -34,7 +34,7 @@
                     </div>
                     <tr>
                         <td colspan="2">
-                            <input class="btn icon-btn btn-success" type="submit" name="action" value="Insertar">
+                            <input class="btn icon-btn btn-success" type="Insertar" name="action" value="Insertar">
                             <span class="glyphicon glyphicon-ok-sign"></span>
 
                             <!--			<span class="glyphicons glyphicons-user-add img-circle text-success"></span>-->

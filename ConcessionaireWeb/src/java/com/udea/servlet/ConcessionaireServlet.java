@@ -39,22 +39,25 @@ public class ConcessionaireServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
          PrintWriter out = response.getWriter();
+         
         try{
            String action = request.getParameter("action");
            String url = "index.jsp";
-           if("search".equals(action)){
-           String p = request.getParameter("Placa");
-           boolean checkPlaca = carsFacade.checkPlaca(p);
-           if(checkPlaca){
-           request.getSession().setAttribute("Placa", p);
-           url = "car.jsp";
-                }
-            
-        }
-
-                    
-       
-        } finally {
+          if("search".equals(action)){
+             String p = request.getParameter("placa");
+             boolean checkPlaca = carsFacade.checkPlaca(p);
+             if(checkPlaca){
+             request.getSession().setAttribute("placa", p);
+             url = "car.jsp";
+                }else{url="listcars.jsp?error=1";                
+             } 
+           }
+             else if("prueba".equals(action)){
+                     url="index.jsp";
+                     }
+        response.sendRedirect(url);
+        }                
+        finally {
             out.close();
         }         /* TODO output your page here. You may use following sample code. */
   
