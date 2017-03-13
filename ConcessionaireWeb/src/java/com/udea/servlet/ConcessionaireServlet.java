@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author decho
@@ -86,7 +87,7 @@ public class ConcessionaireServlet extends HttpServlet {
             d.setBrand(request.getParameter("brand"));
             d.setModel(request.getParameter("model"));
             d.setColor(request.getParameter("color"));
-            d.setImage("IMG");
+            d.setImage(request.getParameter("image"));
             d.setQuantity(quant); 
             d.setPrice(quant);
 
@@ -95,6 +96,7 @@ public class ConcessionaireServlet extends HttpServlet {
             url="car.jsp";
             }
         response.sendRedirect(url);
+              
         }                
         finally {
             out.close();

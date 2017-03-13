@@ -21,7 +21,7 @@
         <jsp:include page="menu.jsp"></jsp:include>
         <h1>Sistema de ingreso de Vehiculos</h1>
         <div class="container well">
-            <form action="ConcessionaireServlet?action=insert" method="post">
+            <form action="ConcessionaireServlet?action=insert" enctype="multipart/mixed stream" method="post">
 
                 <table>
                     <tr>
@@ -47,8 +47,8 @@
                     </tr>
                     <tr>
                         <th> <label><b>Imagen</b></label></th>
-                        <th><input type="text" placeholder="Img" class="form-control" name="image"
-                                   required=""/> </th>
+                        <th>
+                           <input class="form-control" type="file" name="image" id="image" required=""/>
                     </tr>
                      <tr>
                         <th> <label><b>Costo</b></label></th>
