@@ -6,5 +6,5 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 |<a href="listcars.jsp">Busqueda por placa</a>|
-|<a href="ConcessionaireServlet?action=prueba">Registro de venta</a>|
+|<a href="ConcessionaireServlet?action=prueba">Registro de ingreso</a>|
 <hr/>
