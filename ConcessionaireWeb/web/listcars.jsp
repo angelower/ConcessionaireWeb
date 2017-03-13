@@ -21,20 +21,19 @@
         <font color="red">Placa no encontrada. Intentelo de nuevo</font>
         </c:if> 
         <jsp:include page="menu.jsp"></jsp:include>
-        <h1>Busqueda por placa</h1>
+        <h1 class="container well">Busqueda por placa</h1>
         <div class="container well">
             <form action="ConcessionaireServlet?action=search" method="post">
 
                 <table>
                     <tr>
-                        <th>  <label><b>Placa</b></label> </th>
+                        <th>  <label><b>Placa: </b></label> </th>
                         <th> 
                             <input type="text" placeholder="Ingrese placa vehiculo" class="form-control" name="placa" required=""/>
                         </th>
                     </tr>
-       
-                <div class="break"></div>                        
-                    </div>
+                <div class="break"></div>
+                
                     <tr>
                         <td colspan="2">
                             <input class="btn icon-btn btn-success" type="submit" name="action" value="Buscar">

@@ -20,7 +20,7 @@
     </head>
     <body>
         <jsp:include page="menu.jsp"></jsp:include>
-        <h1>Registro de vehículo ${placa}</h1>
+        <h1 class="container well">Registro de vehículo ${placa}</h1>
         
         <c:forEach var="a" items="${cars}">
             <c:if test="${placa == a.placa}">
@@ -45,10 +45,11 @@
     </table>
 
                
-    <table   border="1" style="width: 70%" class="table table-striped table-bordered table-hover table-condensed" align="center">
+  <table   border="1" style="width: 70%" class="table table-striped table-bordered table-hover table-condensed" align="center">
+  
         <tr> <th colspan="7" align="center" >INFOMACIÓN DEL COMPRADOR</th></tr>
         <tr>
-            <th>IT</th> 
+            <th >FACTURA DE VENTA</th> 
             <th>ID</th> 
             <th>VALOR</th> 
             <th>COMPRADOR</th> 
