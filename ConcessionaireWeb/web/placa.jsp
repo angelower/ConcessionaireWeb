@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,11 +15,21 @@
     <body>
         <jsp:include page="menu.jsp"></jsp:include>
         <h1>Registro de vehículo ${placa}</h1>
-            <c:forEach var="a" items="${cars}">
-        |${a.placa} |${a.brand}| ${a.color} | ${a.quantity}|
-        <a onclick="return confirm('Esta seguro?')"
-           href="ConcessionaireServlet?action=delete&id=${a.placa}">Delete</a>
-        <hr/>
+        <c:forEach var="a" items="${cars}">
+            <c:if test="${placa == a.placa}">
+        |${a.placa} |${a.brand}| ${a.color} | ${a.quantity}| ${a.price}|
+        <c:forEach var="b" items="${sales}">
+                    <c:if test="${placa == b.placa}">
+        |${b.billofsale} |${b.buyer}|${b.pricetaxes}
+                            <c:forEach var="c" items="${customers}">
+                    <c:if test="${b.buyer == c.id}">
+        |${c.namess} |${c.city}|${c.phone}|${c.email}
+   
+                    </c:if>
+                            </c:forEach>
+                    </c:if>
+        </c:forEach>
+            </c:if>
     </c:forEach>
     </body>
 </html>
