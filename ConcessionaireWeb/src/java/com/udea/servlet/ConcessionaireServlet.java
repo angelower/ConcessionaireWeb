@@ -7,9 +7,11 @@ package com.udea.servlet;
 
 import com.udea.ejb.CarsFacade;
 import com.udea.ejb.CarsFacadeLocal;
+import com.udea.entity.Cars;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Set;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,12 +50,16 @@ public class ConcessionaireServlet extends HttpServlet {
              boolean checkPlaca = carsFacade.checkPlaca(p);
              if(checkPlaca){
              request.getSession().setAttribute("placa", p);
-             url = "car.jsp";
+             List<Cars> findAll = carsFacade.findAll();
+             request.getSession().setAttribute("cars", findAll);                 
+             url = "placa.jsp";
                 }else{url="listcars.jsp?error=1";                
              } 
            }
-             else if("prueba".equals(action)){
-                     url="index.jsp";
+            else if("prueba".equals(action)){
+                     List<Cars> findAll = carsFacade.findAll();
+                     request.getSession().setAttribute("cars", findAll);             
+                     url="car.jsp";
                      }
         response.sendRedirect(url);
         }                
