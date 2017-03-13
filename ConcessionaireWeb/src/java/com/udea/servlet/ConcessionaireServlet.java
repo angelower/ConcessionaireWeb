@@ -7,11 +7,15 @@ package com.udea.servlet;
 
 import com.udea.ejb.CarsFacade;
 import com.udea.ejb.CarsFacadeLocal;
+import com.udea.ejb.CustomersFacadeLocal;
+import com.udea.ejb.GeneralsalesFacadeLocal;
 import com.udea.entity.Cars;
+import com.udea.entity.Customers;
+import com.udea.entity.Generalsales;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +30,14 @@ public class ConcessionaireServlet extends HttpServlet {
 
     @EJB
     private CarsFacadeLocal carsFacade;
+    
+    @EJB 
+    private CustomersFacadeLocal customersFacade;
+    
+    @EJB
+    private GeneralsalesFacadeLocal generalsalesFacade;
+    
+    
 
 
     /**
@@ -51,16 +63,37 @@ public class ConcessionaireServlet extends HttpServlet {
              if(checkPlaca){
              request.getSession().setAttribute("placa", p);
              List<Cars> findAll = carsFacade.findAll();
-             request.getSession().setAttribute("cars", findAll);                 
+             request.getSession().setAttribute("cars", findAll); 
+             List<Customers> findAll2 = customersFacade.findAll();
+             request.getSession().setAttribute("customers", findAll2); 
+             List<Generalsales> findAll3 = generalsalesFacade.findAll();
+             request.getSession().setAttribute("sales", findAll3);
+
+             
              url = "placa.jsp";
                 }else{url="listcars.jsp?error=1";                
              } 
            }
             else if("prueba".equals(action)){
-                     List<Cars> findAll = carsFacade.findAll();
-                     request.getSession().setAttribute("cars", findAll);             
+                     
+           
                      url="car.jsp";
                      }
+            else if("insert".equals(action)){
+            Cars d = new Cars();
+            int quant = 10;
+            d.setPlaca(request.getParameter("placa"));
+            d.setBrand(request.getParameter("brand"));
+            d.setModel(request.getParameter("model"));
+            d.setColor(request.getParameter("color"));
+            d.setImage("IMG");
+            d.setQuantity(quant); 
+            d.setPrice(quant);
+
+//            a.setPrice(Integer.valueOf(request.getParameter("price")));
+            carsFacade.create(d);
+            url="car.jsp";
+            }
         response.sendRedirect(url);
         }                
         finally {
