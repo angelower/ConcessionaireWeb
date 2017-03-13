@@ -10,25 +10,71 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>.:. Vehículo .:.</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
     <body>
         <jsp:include page="menu.jsp"></jsp:include>
         <h1>Registro de vehículo ${placa}</h1>
+        
         <c:forEach var="a" items="${cars}">
             <c:if test="${placa == a.placa}">
-        |${a.placa} |${a.brand}| ${a.color} | ${a.quantity}| ${a.price}|
+                <br>
+           
+         <div class="container well">
+    <table  border="1" style="width: 70%" class="table table-striped table-bordered table-hover table-condensed" align="center">
+        <tr>
+            <th>PLACA</th> 
+            <th>MARCA</th> 
+            <th>COLOR</th> 
+            <th>PRECIO</th>
+            <th>IMAGEN</th>
+        </tr>
+        <tr>
+            <th>${a.placa}</th> 
+            <th>${a.brand}</th> 
+            <th>${a.color}</th> 
+            <th>${a.price}</th>
+            <th><img src="${a.image}" height="100" width="160"></th>
+        </tr>
+    </table>
+
+               
+    <table   border="1" style="width: 70%" class="table table-striped table-bordered table-hover table-condensed" align="center">
+        <tr> <th colspan="7" align="center" >INFOMACIÓN DEL COMPRADOR</th></tr>
+        <tr>
+            <th>IT</th> 
+            <th>ID</th> 
+            <th>VALOR</th> 
+            <th>COMPRADOR</th> 
+            <th>CIUDAD</th>
+            <th>TELÉFONO</th>
+            <th>E-MAIL</th>
+        </tr>
+        <tr>
         <c:forEach var="b" items="${sales}">
-                    <c:if test="${placa == b.placa}">
-        |${b.billofsale} |${b.buyer}|${b.pricetaxes}
-                            <c:forEach var="c" items="${customers}">
-                    <c:if test="${b.buyer == c.id}">
-        |${c.namess} |${c.city}|${c.phone}|${c.email}
-   
-                    </c:if>
-                            </c:forEach>
-                    </c:if>
+        <c:if test="${placa == b.placa}">
+            <th>${b.billofsale} </th>
+            <th>${b.buyer}</th>
+            <th>${b.pricetaxes}</th>
+        <c:forEach var="c" items="${customers}">
+        <c:if test="${b.buyer == c.id}">
+            <th>${c.namess}</th>
+            <th>${c.city}</th>
+            <th>${c.phone}</th>
+            <th>${c.email}</th>
+        </c:if>
+         </c:forEach>
+           </c:if>
         </c:forEach>
+        </tr>
+        </table>
+           </div>
             </c:if>
     </c:forEach>
     </body>
