@@ -21,7 +21,7 @@
         <jsp:include page="menu.jsp"></jsp:include>
         <h1>Sistema de ingreso de Vehiculos</h1>
         <div class="container well">
-            <form action="ConcessionaireServlet?action=insert" enctype="multipart/mixed stream" method="post">
+            <form action="ConcessionaireServlet?action=insert" enctype="multipart/mixed-stream" method="post">
 
                 <table>
                     <tr>
