@@ -8,4 +8,5 @@
 <a class="btn icon-btn btn-success" href="index.jsp">Inicio</a>
 <a class="btn icon-btn btn-success" href="listcars.jsp">Busqueda por placa</a>
 <a class="btn icon-btn btn-success" href="ConcessionaireServlet?action=prueba">Registro de ingreso</a>
+<a class="btn icon-btn btn-success" href="sale.jsp">Registro de ventas</a>
 <hr/>

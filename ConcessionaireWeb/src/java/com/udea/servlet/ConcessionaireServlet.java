@@ -12,21 +12,33 @@ import com.udea.ejb.GeneralsalesFacadeLocal;
 import com.udea.entity.Cars;
 import com.udea.entity.Customers;
 import com.udea.entity.Generalsales;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+ 
+
 
 
 /**
  *
  * @author decho
  */
+@WebServlet("/upload")
+@MultipartConfig
 public class ConcessionaireServlet extends HttpServlet {
 
     @EJB
@@ -75,25 +87,52 @@ public class ConcessionaireServlet extends HttpServlet {
                 }else{url="listcars.jsp?error=1";                
              } 
            }
-            else if("prueba".equals(action)){
-                     
+            else if("prueba".equals(action)){                  
            
                      url="car.jsp";
                      }
+            
             else if("insert".equals(action)){
             Cars d = new Cars();
             int quant = 10;
             d.setPlaca(request.getParameter("placa"));
             d.setBrand(request.getParameter("brand"));
             d.setModel(request.getParameter("model"));
-            d.setColor(request.getParameter("color"));
+            d.setColor(request.getParameter("color"));             
             d.setImage(request.getParameter("image"));
-            d.setQuantity(quant); 
-            d.setPrice(quant);
-
-//            a.setPrice(Integer.valueOf(request.getParameter("price")));
+            d.setQuantity(quant);       
+            d.setPrice(Integer.valueOf(request.getParameter("price")));
+            
+               
             carsFacade.create(d);
+ //           d.setPrice(Integer);
+            
+           
             url="car.jsp";
+            }
+          else if("ventas".equals(action)){
+            Customers c = new Customers();
+            Generalsales d = new Generalsales();
+            String p = request.getParameter("placa");
+            boolean checkPlaca = carsFacade.checkPlaca(p);
+            if(checkPlaca){
+            c.setId(Integer.valueOf(request.getParameter("id")));
+            c.setNamess(request.getParameter("namess"));
+            c.setCity(request.getParameter("city"));
+            c.setPhone(request.getParameter("phone"));
+            c.setEmail(request.getParameter("email"));
+            d.setPlaca(request.getParameter("placa"));
+            d.setBuyer((request.getParameter("id")));
+            d.setPricetaxes(request.getParameter("pricetaxes"));   
+            d.setBillofsale(Integer.valueOf(request.getParameter("billofsale")));
+           //           d.setPrice(Integer);
+
+ //         d.setPrice(Integer.valueOf(request.getParameter("price")));
+            customersFacade.create(c);
+            generalsalesFacade.create(d);
+            url="sale.jsp";
+            }
+            else{url="sale.jsp?error=1";}
             }
         response.sendRedirect(url);
               
